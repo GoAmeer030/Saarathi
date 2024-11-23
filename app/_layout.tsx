@@ -1,4 +1,6 @@
 import { Stack } from "expo-router";
+import "@/styles/global.css";
+import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 
