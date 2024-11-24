@@ -1,5 +1,20 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm run lint
+# Run code formatter
 npm run format
+
+# Add formatted changes
+git add .
+
+# Run linter
+npm run lint
+
+# Check if the previous commands were successful
+if [ $? -ne 0 ]; then
+  echo "Pre-commit checks failed. Please fix the issues before committing."
+  exit 1
+fi
+
+echo "Pre-commit checks passed."
+exit 0
