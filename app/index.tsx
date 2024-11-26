@@ -6,8 +6,12 @@ import getPageTextContent from "@/assets/content/getPageTextContent";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
 
+import LottieView from "lottie-react-native";
 import BusLogo from "@/components/logo/Bus";
 import ChevronDownIcon from "@/components/logo/ChevronDown";
+
+import { languageType } from "@/types/general-types";
+import { getLanguageExpansion, languageList } from "@/utils/langugesUtils";
 
 import {
   Select,
@@ -20,8 +24,7 @@ import {
   SelectDragIndicator,
   SelectItem,
 } from "@/components/ui/select";
-import { languageType } from "@/types/general-types";
-import { getLanguageExpansion, languageList } from "@/utils/langugesUtils";
+import { Button, ButtonText } from "@/components/ui/button";
 
 export default function LandingLayout() {
   const { lang } = useLocalSearchParams();
@@ -40,17 +43,29 @@ export default function LandingLayout() {
 
   return (
     <SafeAreaView className="h-full bg-primary-0">
-      <View className="flex h-full w-full flex-col font-nototamil">
+      <View className="flex h-full w-full flex-col justify-between p-5 font-nototamil">
         <View className="m-5 flex flex-row items-center gap-2">
           <View className="h-8 w-8">
-            <BusLogo color={logoColor} />
+            <BusLogo color="#8b5cf6" />
           </View>
           <Text className="text-3xl font-bold text-typography-950">
             {textContent.title}
           </Text>
         </View>
 
-        <View className="flex items-center justify-center">
+        <View className="mb-32 flex items-center justify-center">
+          <View className="p-5">
+            <LottieView
+              autoPlay
+              loop
+              style={{ width: 300, height: 150 }}
+              source={require("@/assets/lottie/PaperPlane.json")}
+              resizeMode="cover"
+            />
+          </View>
+          <Text className="w-full text-center text-lg text-typography-950">
+            {textContent.selectLanguage}
+          </Text>
           <View className="w-[40%]">
             <Select
               defaultValue="English"
@@ -59,7 +74,7 @@ export default function LandingLayout() {
               <SelectTrigger
                 variant="underlined"
                 size="lg"
-                className="m-2 justify-between border-b-0 px-5"
+                className="m-2 justify-between border-primary-600 px-5"
               >
                 <SelectInput
                   placeholder="Select option"
@@ -87,6 +102,19 @@ export default function LandingLayout() {
               </SelectPortal>
             </Select>
           </View>
+        </View>
+
+        <View className="flex items-center">
+          <Button
+            className="h-11 w-[90%] rounded-lg"
+            size="md"
+            variant="solid"
+            action="primary"
+          >
+            <ButtonText className="font-semibold text-typography-950">
+              {textContent.buttonText}
+            </ButtonText>
+          </Button>
         </View>
       </View>
     </SafeAreaView>
