@@ -4,15 +4,18 @@
     "slug": "saarathi",
     "version": "1.0.0",
     "orientation": "portrait",
-    "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "icon": "./assets/images/SaarathiLogo.png",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.goameer030.saarathi"
     },
     "android": {
+      "package": "com.goameer030.saarathi",
       "adaptiveIcon": {
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#ffffff",
+        "foregroundImage": "./assets/images/SaarathiLogo.png"
       }
     },
     "web": {
@@ -24,11 +27,13 @@
       [
         "expo-splash-screen",
         {
+          "image": "./assets/images/SaarathiLogo.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      ["@react-native-google-signin/google-signin"]
     ],
     "experiments": {
       "typedRoutes": true
