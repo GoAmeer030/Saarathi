@@ -3,20 +3,26 @@ const getLandingPageContent = (lang: string) => {
     case "ta":
       return {
         title: "சாரதி",
-        buttonText: "வாங்க போகலாம்!!",
+        buttonText: "கூகுள் உடன் தொடரவும்!!",
+        disclaimer:
+          "*தொடர்வதன் மூலம், எங்கள் சேவை விதிமுறைகள் மற்றும் தனியுரிமைக் கொள்கையை ஏற்கிறீர்கள்",
         selectLanguage: "உங்கள் மொழியுடன் தொடங்குவோம்!",
       };
     case "hi":
       return {
         title: "सारथी",
-        buttonText: "आओ चलना शुरू करें!!",
+        buttonText: "गूगल के साथ जारी रखें!!",
+        disclaimer:
+          "*जारी रखकर, आप हमारी सेवा की शर्तों और गोपनीयता नीति से सहमत हैं",
         selectLanguage: "आइए आपकी भाषा से शुरुआत करें!",
       };
     default:
       return {
         title: "Saarathi",
-        buttonText: "Let's Get Going!!",
-        selectLanguage: "Let's Start With Your Language!",
+        buttonText: "Continue With Google!!",
+        disclaimer:
+          "*By continuing, you agree to our Terms of Service and Privacy Policy",
+        selectLanguage: "Let's Begin With Your Language!",
       };
   }
 };

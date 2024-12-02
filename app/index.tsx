@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useLocalSearchParams } from "expo-router";
 import useLanguageStore from "@/store/useLanguageStore";
@@ -24,7 +24,9 @@ import {
   SelectDragIndicator,
   SelectItem,
 } from "@/components/ui/select";
-import { Button, ButtonText } from "@/components/ui/button";
+import { Heading } from "@/components/ui/heading";
+import { Text } from "@/components/ui/text";
+import GoogleSignInButton from "@/components/auth/google-auth";
 
 export default function LandingLayout() {
   const { lang } = useLocalSearchParams();
@@ -42,15 +44,15 @@ export default function LandingLayout() {
   }, [lang, language, setLanguage]);
 
   return (
-    <SafeAreaView className="h-full bg-primary-0">
-      <View className="flex h-full w-full flex-col justify-between p-5 font-nototamil">
-        <View className="m-5 flex flex-row items-center gap-2">
-          <View className="h-8 w-8">
+    <SafeAreaView className="h-full bg-primary-0 font-nototamil">
+      <View className="flex h-full w-full flex-col justify-between p-5">
+        <View className="m-3 flex flex-row items-center gap-2">
+          <View className="h-10 w-10">
             <BusLogo color="#8b5cf6" />
           </View>
-          <Text className="text-3xl font-bold text-typography-950">
+          <Heading size="2xl" bold className="py-1 text-center">
             {textContent.title}
-          </Text>
+          </Heading>
         </View>
 
         <View className="mb-32 flex items-center justify-center">
@@ -63,7 +65,7 @@ export default function LandingLayout() {
               resizeMode="cover"
             />
           </View>
-          <Text className="w-full text-center text-lg text-typography-950">
+          <Text size="lg" className="w-full text-center">
             {textContent.selectLanguage}
           </Text>
           <View className="w-[40%]">
@@ -78,7 +80,7 @@ export default function LandingLayout() {
               >
                 <SelectInput
                   placeholder="Select option"
-                  className="h-20 font-nototamil"
+                  className="h-20 font-nototamil text-lg font-semibold"
                 />
                 <View className="h-5 w-5">
                   <ChevronDownIcon color={logoColor} />
@@ -104,17 +106,15 @@ export default function LandingLayout() {
           </View>
         </View>
 
-        <View className="flex items-center">
-          <Button
-            className="h-11 w-[90%] rounded-lg"
-            size="md"
-            variant="solid"
-            action="primary"
+        <View className="flex items-center justify-center">
+          <Text
+            size="2xs"
+            className="p-0.5 text-center text-typography-700"
+            sub
           >
-            <ButtonText className="font-semibold text-typography-950">
-              {textContent.buttonText}
-            </ButtonText>
-          </Button>
+            {textContent.disclaimer}
+          </Text>
+          <GoogleSignInButton />
         </View>
       </View>
     </SafeAreaView>

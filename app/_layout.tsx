@@ -11,11 +11,8 @@ export default function RootLayout() {
   cssInterop(SafeAreaView, { className: "style" });
 
   return (
-    <GluestackUIProvider mode="dark">
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
+    <GluestackUIProvider mode="light">
+      <Stack screenOptions={{ headerShown: false }} />
       <StatusBar style="auto" />
     </GluestackUIProvider>
   );

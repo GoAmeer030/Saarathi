@@ -1,6 +1,6 @@
 import getLandingPageContent from "./landingPageTextContent";
 
-const getPageTextContent = (page: string, lang: string) => {
+const getPageTextContent = (page: string, lang: string): any => {
   switch (page) {
     case "landing":
       return getLandingPageContent(lang);
