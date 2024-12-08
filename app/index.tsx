@@ -7,8 +7,8 @@ import { useEffect } from "react";
 import { useColorScheme } from "react-native";
 
 import LottieView from "lottie-react-native";
-import BusLogo from "@/components/logo/Bus";
-import ChevronDownIcon from "@/components/logo/ChevronDown";
+import BusLogo from "@/components/logo/bus";
+import ChevronDownIcon from "@/components/logo/chevron-down";
 
 import { languageType } from "@/types/general-types";
 import { getLanguageExpansion, languageList } from "@/utils/langugesUtils";
