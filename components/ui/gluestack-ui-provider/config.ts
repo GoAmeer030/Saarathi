@@ -307,3 +307,7 @@ export const config = {
     "--color-indicator-error": "232 70 69",
   }),
 };
+
+export const colors = {
+  primary: "#7c3aed",
+};

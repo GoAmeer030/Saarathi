@@ -1,9 +1,6 @@
 import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useLocalSearchParams } from "expo-router";
 import useLanguageStore from "@/store/useLanguageStore";
-import getPageTextContent from "@/assets/content/getPageTextContent";
-import { useEffect } from "react";
 import { useColorScheme } from "react-native";
 
 import LottieView from "lottie-react-native";
@@ -27,28 +24,22 @@ import {
 import { Heading } from "@/components/ui/heading";
 import { Text } from "@/components/ui/text";
 import GoogleSignInButton from "@/components/auth/google-auth";
+import { colors } from "@/components/ui/gluestack-ui-provider/config";
+import { useLanguage } from "@/hooks/languageHook";
 
-export default function LandingLayout() {
-  const { lang } = useLocalSearchParams();
-  const { language, setLanguage } = useLanguageStore();
+const LandingLayout = () => {
   const colorScheme = useColorScheme();
-
-  const textContent = getPageTextContent("landing", language);
-
   const logoColor = colorScheme === "dark" ? "white" : "black";
 
-  useEffect(() => {
-    if (lang && lang !== language) {
-      setLanguage(lang as languageType);
-    }
-  }, [lang, language, setLanguage]);
+  const { setLanguage } = useLanguageStore();
+  const textContent = useLanguage("landing");
 
   return (
-    <SafeAreaView className="h-full bg-primary-0 font-nototamil">
+    <SafeAreaView className="h-full bg-background-0 font-nototamil">
       <View className="flex h-full w-full flex-col justify-between p-5">
         <View className="m-3 flex flex-row items-center gap-2">
           <View className="h-10 w-10">
-            <BusLogo color="#8b5cf6" />
+            <BusLogo color={colors.primary} />
           </View>
           <Heading size="2xl" bold className="py-1 text-center">
             {textContent.title}
@@ -119,4 +110,6 @@ export default function LandingLayout() {
       </View>
     </SafeAreaView>
   );
-}
+};
+
+export default LandingLayout;

@@ -10,7 +10,7 @@ import {
 import getPageTextContent from "@/assets/content/getPageTextContent";
 import useLanguageStore from "@/store/useLanguageStore";
 import { languageType } from "@/types/general-types";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, router } from "expo-router";
 import { useEffect, useState } from "react";
 import GoogleLogo from "@/components/logo/google";
 import useUserStore from "@/store/useUserStore";
@@ -148,6 +148,8 @@ const GoogleSignInButton = () => {
             phone: data.user?.phone || "",
             pictureUrl: data.user?.user_metadata?.avatar_url || "",
           });
+
+          router.replace("/(tabs)/home");
         }
       } else {
         showFailedToast();
@@ -161,7 +163,7 @@ const GoogleSignInButton = () => {
 
   return (
     <Button
-      className="m-3 h-11 w-[90%] rounded-lg"
+      className="m-3 h-11 w-[90%] rounded-lg bg-primary-600"
       size="lg"
       variant="solid"
       action="primary"

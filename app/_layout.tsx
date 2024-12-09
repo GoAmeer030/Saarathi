@@ -6,14 +6,21 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { cssInterop } from "nativewind";
 import "../styles/global.css";
+import MapView from "react-native-maps";
 
-export default function RootLayout() {
+const RootLayout = () => {
   cssInterop(SafeAreaView, { className: "style" });
+  cssInterop(MapView, { className: "style" });
 
   return (
     <GluestackUIProvider mode="light">
-      <Stack screenOptions={{ headerShown: false }} />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      </Stack>
       <StatusBar style="auto" />
     </GluestackUIProvider>
   );
-}
+};
+
+export default RootLayout;
