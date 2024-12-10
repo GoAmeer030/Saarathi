@@ -29,6 +29,7 @@ module.exports = {
           apiKey: GOOGLE_MAPS_API_KEY,
         },
       },
+      // buildType: "apk",
     },
     web: {
       bundler: "metro",
