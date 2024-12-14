@@ -1,7 +1,6 @@
 import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import useLanguageStore from "@/store/useLanguageStore";
-import { useColorScheme } from "react-native";
 
 import LottieView from "lottie-react-native";
 import BusLogo from "@/components/logo/bus";
@@ -24,13 +23,9 @@ import {
 import { Heading } from "@/components/ui/heading";
 import { Text } from "@/components/ui/text";
 import GoogleSignInButton from "@/components/auth/google-auth";
-import { colors } from "@/components/ui/gluestack-ui-provider/config";
 import { useLanguage } from "@/hooks/languageHook";
 
 const LandingLayout = () => {
-  const colorScheme = useColorScheme();
-  const logoColor = colorScheme === "dark" ? "white" : "black";
-
   const { setLanguage } = useLanguageStore();
   const textContent = useLanguage("landing");
 
@@ -38,15 +33,17 @@ const LandingLayout = () => {
     <SafeAreaView className="h-full bg-background-0 font-nototamil">
       <View className="flex h-full w-full flex-col justify-between p-5">
         <View className="m-3 flex flex-row items-center gap-2">
-          <View className="h-10 w-10">
-            <BusLogo color={colors.primary} />
+          <View className="h-12 w-12 rounded-xl bg-primary-600">
+            <View className="p-2">
+              <BusLogo color="white" />
+            </View>
           </View>
           <Heading size="2xl" bold className="py-1 text-center">
             {textContent.title}
           </Heading>
         </View>
 
-        <View className="mb-32 flex items-center justify-center">
+        <View className="mb-32 flex items-center justify-center gap-3">
           <View className="p-5">
             <LottieView
               autoPlay
@@ -56,7 +53,10 @@ const LandingLayout = () => {
               resizeMode="cover"
             />
           </View>
-          <Text size="lg" className="w-full text-center">
+          <Text
+            size="lg"
+            className="w-[90%] text-wrap text-center text-3xl font-bold text-typography-900"
+          >
             {textContent.selectLanguage}
           </Text>
           <View className="w-[40%]">
@@ -74,7 +74,7 @@ const LandingLayout = () => {
                   className="h-20 font-nototamil text-lg font-semibold"
                 />
                 <View className="h-5 w-5">
-                  <ChevronDownIcon color={logoColor} />
+                  <ChevronDownIcon color="black" />
                 </View>
               </SelectTrigger>
 
@@ -97,15 +97,27 @@ const LandingLayout = () => {
           </View>
         </View>
 
-        <View className="flex items-center justify-center">
-          <Text
-            size="2xs"
-            className="p-0.5 text-center text-typography-700"
-            sub
-          >
-            {textContent.disclaimer}
-          </Text>
+        <View className="flex items-center justify-center gap-3">
           <GoogleSignInButton />
+          <Text size="sm" className="text-md p-0.5 text-center" sub>
+            <Text size="sm" className="text-md p-0.5 text-center" sub>
+              {textContent.disclaimer
+                .split(/"(.*?)"/g)
+                .map((part: string, index: number) => {
+                  const isQuoted = index % 2 === 1;
+                  return (
+                    <Text
+                      key={index}
+                      className={
+                        isQuoted ? "text-primary-500" : "text-typography-500"
+                      }
+                    >
+                      {part}
+                    </Text>
+                  );
+                })}
+            </Text>
+          </Text>
         </View>
       </View>
     </SafeAreaView>

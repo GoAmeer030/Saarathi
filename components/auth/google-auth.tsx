@@ -163,14 +163,14 @@ const GoogleSignInButton = () => {
 
   return (
     <Button
-      className="m-3 h-11 w-[90%] rounded-lg bg-primary-600"
+      className="m-3 flex w-[90%] items-center justify-center rounded-lg bg-primary-600"
       size="lg"
       variant="solid"
       action="primary"
       gap-2
       onPress={handleSignIn}
     >
-      <View className="w-[8%]">
+      <View>
         {showSpinner ? (
           <ButtonSpinner color={"white"} />
         ) : (
@@ -179,7 +179,7 @@ const GoogleSignInButton = () => {
           </ButtonIcon>
         )}
       </View>
-      <ButtonText className="font-semibold text-typography-0">
+      <ButtonText className="p-2 text-xl font-semibold text-typography-0">
         {textContent.buttonText}
       </ButtonText>
     </Button>
