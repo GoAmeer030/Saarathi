@@ -1,12 +1,10 @@
 import { Text } from "@/components/ui/text";
 import { View } from "react-native";
 
-const Home = () => {
+export default function User() {
   return (
     <View>
-      <Text>Logout</Text>
+      <Text>User</Text>
     </View>
   );
-};
-
-export default Home;
+}

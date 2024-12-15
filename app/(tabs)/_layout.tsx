@@ -1,7 +1,7 @@
 import { Tabs } from "expo-router";
 import { colors } from "@/components/ui/gluestack-ui-provider/config";
 import { useLanguage } from "@/hooks/languageHook";
-import { Home, LogOut } from "lucide-react-native";
+import { Home, UserRound, Search, Bolt } from "lucide-react-native";
 
 const TabLayout = () => {
   const textContent = useLanguage("tabs");
@@ -21,10 +21,25 @@ const TabLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="logout"
+        name="search"
         options={{
-          title: textContent.logout,
-          tabBarIcon: ({ color }) => <LogOut color={color} />,
+          title: textContent.search,
+          tabBarIcon: ({ color }) => <Search color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="tools"
+        options={{
+          title: textContent.tools,
+          tabBarIcon: ({ color }) => <Bolt color={color} />,
+        }}
+      />
+
+      <Tabs.Screen
+        name="user"
+        options={{
+          title: textContent.profile,
+          tabBarIcon: ({ color }) => <UserRound color={color} />,
         }}
       />
     </Tabs>

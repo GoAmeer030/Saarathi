@@ -13,7 +13,7 @@ module.exports = {
     userInterfaceStyle: "automatic",
     newArchEnabled: true,
     icon: "./assets/images/SaarathiLogo.png",
-    schema: "com.goameer030.saarathi",
+    scheme: "com.goameer030.saarathi",
     ios: {
       supportsTablet: true,
       bundleIdentifier: "com.goameer030.saarathi",

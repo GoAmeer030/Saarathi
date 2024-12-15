@@ -3,17 +3,23 @@ const getTabsContent = (lang: string) => {
     case "ta":
       return {
         home: "முகப்பு",
-        logout: "வெளியேறு",
+        search: "தேடல்",
+        tools: "அம்சங்கள்",
+        profile: "சுயவிவரம்",
       };
     case "hi":
       return {
         home: "होम",
-        logout: "लॉग आउट",
+        search: "खोज",
+        tools: "विशेषताएँ",
+        profile: "प्रोफ़ाइल",
       };
     default:
       return {
         home: "Home",
-        logout: "Logout",
+        search: "Search",
+        tools: "Tools",
+        profile: "Profile",
       };
   }
 };
